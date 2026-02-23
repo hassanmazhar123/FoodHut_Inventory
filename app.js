@@ -8,7 +8,7 @@
 // ============================================
 
 let APP_CONFIG = {
-    scriptUrl: '',
+    scriptUrl: 'https://script.google.com/macros/s/AKfycbyhdAFiUWxxMZD_bEXHjETC7KxNt0ZLVSp2dj9PHlSHDm4VDbZ_6GnbeE8084Jb0WFS/exec',
     userName: '',
     authCode: '',
     userRole: '',
@@ -54,7 +54,9 @@ function loadSettings() {
 
     if (savedUrl) {
         APP_CONFIG.scriptUrl = savedUrl;
+    }
 
+    if (APP_CONFIG.scriptUrl) {
         if (savedName && savedCode) {
             APP_CONFIG.userName = savedName;
             APP_CONFIG.authCode = savedCode;
