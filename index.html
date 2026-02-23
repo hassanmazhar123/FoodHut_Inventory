@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 
 <body>
@@ -60,9 +61,19 @@
                         <input type="text" id="loginUsername" placeholder="Enter username" required>
                     </div>
                     <div class="form-group">
-                        <label for="loginPin">Access Pin</label>
-                        <input type="password" id="loginPin" placeholder="Enter 4-digit pin" required maxlength="4"
-                            pattern="[0-9]*" inputmode="numeric">
+                        <label for="loginPin">Access Password</label>
+                        <div class="password-input-group">
+                            <input type="password" id="loginPin" placeholder="Enter your password" required>
+                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility('loginPin')"
+                                aria-label="Toggle password visibility">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="eye-icon">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
                         Login to System
@@ -86,9 +97,19 @@
                         <input type="text" id="adminUsername" placeholder="Choose a username" required>
                     </div>
                     <div class="form-group">
-                        <label for="adminPin">Set Access Pin</label>
-                        <input type="password" id="adminPin" placeholder="Set a 4-digit pin" required maxlength="4"
-                            pattern="[0-9]*" inputmode="numeric">
+                        <label for="adminPin">Set Access Password</label>
+                        <div class="password-input-group">
+                            <input type="password" id="adminPin" placeholder="Enter your password" required>
+                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility('adminPin')"
+                                aria-label="Toggle password visibility">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="eye-icon">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
                         Create Admin Account
@@ -110,8 +131,8 @@
                 </svg>
             </button>
             <div class="logo">
-                <img src="logo.png" alt="Food Hut Homemade" class="logo-image full-logo">
-                <img src="logoicon.png" alt="Food Hut" class="logo-image icon-logo">
+                <img src="assets/logo.png" alt="Food Hut Homemade" class="logo-image full-logo">
+                <img src="assets/logoicon.png" alt="Food Hut" class="logo-image icon-logo">
             </div>
             <nav class="nav-menu">
                 <a href="#" class="nav-item active" data-view="dashboard">
@@ -801,9 +822,20 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="mgmtPin">Access Pin *</label>
-                            <input type="password" id="mgmtPin" required maxlength="4" pattern="[0-9]*"
-                                inputmode="numeric" placeholder="4-digit pin">
+                            <label for="mgmtPin">Access Password *</label>
+                            <div class="password-input-group">
+                                <input type="password" id="mgmtPin" required placeholder="Enter your password">
+                                <button type="button" class="password-toggle"
+                                    onclick="togglePasswordVisibility('mgmtPin')"
+                                    aria-label="Toggle password visibility">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="eye-icon">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="mgmtRole">Role *</label>
@@ -938,10 +970,21 @@
                         <input type="text" id="profileUsername" placeholder="Username" required>
                     </div>
                     <div class="form-group">
-                        <label>New Access PIN (Optional)</label>
-                        <input type="password" id="profilePin" placeholder="Leave blank to keep current" pattern="\d{4}"
-                            title="PIN must be exactly 4 digits">
-                        <small class="text-muted">4 digit numeric code</small>
+                        <label>New Access Password (Optional)</label>
+                        <div class="password-input-group">
+                            <input type="password" id="profilePin" placeholder="Enter your password">
+                            <button type="button" class="password-toggle"
+                                onclick="togglePasswordVisibility('profilePin')"
+                                aria-label="Toggle password visibility">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="eye-icon">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                        <small class="text-muted">Enter a new secure password</small>
                     </div>
 
                     <div class="form-actions" style="margin-top: 24px;">
