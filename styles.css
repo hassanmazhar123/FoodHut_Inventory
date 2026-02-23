@@ -1224,10 +1224,44 @@ body::before {
 }
 
 input[type="password"] {
-    letter-spacing: 0.2em;
-    font-family: monospace;
-    font-size: 1.2rem;
-    text-align: center;
+    letter-spacing: normal;
+    font-family: inherit;
+    font-size: 14px;
+    text-align: left;
+}
+
+.password-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-group input {
+    padding-right: 45px !important;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition-fast);
+    z-index: 5;
+}
+
+.password-toggle:hover {
+    color: var(--text-primary);
+}
+
+.password-toggle svg {
+    width: 20px;
+    height: 20px;
 }
 
 .setup-help {
