@@ -235,8 +235,8 @@ async function handleAdminSetupSubmit(e) {
     const username = document.getElementById('adminUsername').value.trim();
     const pin = document.getElementById('adminPin').value.trim();
 
-    if (!username || pin.length !== 4) {
-        showToast('Username and 4-digit pin are required', 'error');
+    if (!username || !pin) {
+        showToast('Username and password are required', 'error');
         return;
     }
 
@@ -1469,8 +1469,8 @@ async function handleUserFormSubmit(e) {
         role: document.getElementById('mgmtRole').value
     };
 
-    if (!data.username || data.pin.length !== 4) {
-        showToast('Username and 4-digit pin are required', 'error');
+    if (!data.username || !data.pin) {
+        showToast('Username and password are required', 'error');
         return;
     }
 
@@ -1662,6 +1662,21 @@ function showToast(message, type = 'info') {
     setTimeout(() => {
         toast.classList.remove('show');
     }, 3000);
+}
+
+function togglePasswordVisibility(inputId) {
+    const input = document.getElementById(inputId);
+    const btn = input.nextElementSibling;
+    const isPassword = input.type === 'password';
+
+    input.type = isPassword ? 'text' : 'password';
+
+    // Update icon style to show active state
+    if (input.type === 'text') {
+        btn.style.color = 'var(--accent-blue)';
+    } else {
+        btn.style.color = 'var(--text-muted)';
+    }
 }
 function updateUserDisplay() {
     const nameDisplay = document.getElementById('userNameDisplay');
