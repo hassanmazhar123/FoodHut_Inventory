@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 
@@ -147,65 +149,151 @@
                     <span>Dashboard</span>
                 </a>
 
-                <a href="#" class="nav-item" data-view="overview">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="nav-icon">
-                        <path d="M3 3v18h18" />
-                        <path d="m19 9-5 5-4-4-3 3" />
-                    </svg>
-                    <span>Overview</span>
-                </a>
+                <div class="nav-dropdown" id="inventoryDropdown">
+                    <div class="nav-item dropdown-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="nav-icon">
+                            <path
+                                d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                            <path d="m3.3 7 8.7 5 8.7-5" />
+                            <path d="M12 22V12" />
+                        </svg>
+                        <span>Inventory</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="dropdown-chevron">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="#" class="nav-item sub-item" data-view="overview">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="nav-icon">
+                                <path d="M3 3v18h18" />
+                                <path d="m19 9-5 5-4-4-3 3" />
+                            </svg>
+                            <span>Overview</span>
+                        </a>
 
-                <a href="#" class="nav-item" data-view="products">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="nav-icon">
-                        <path d="m7.5 4.27 9 5.15" />
-                        <path
-                            d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-                        <path d="m3.3 7 8.7 5 8.7-5" />
-                        <path d="M12 22V12" />
-                    </svg>
-                    <span>Product Stock</span>
-                </a>
+                        <a href="#" class="nav-item sub-item" data-view="products">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="nav-icon">
+                                <path d="m7.5 4.27 9 5.15" />
+                                <path
+                                    d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                                <path d="m3.3 7 8.7 5 8.7-5" />
+                                <path d="M12 22V12" />
+                            </svg>
+                            <span>Product Stock</span>
+                        </a>
 
-                <a href="#" class="nav-item" data-view="materials">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="nav-icon">
-                        <path d="M4.5 3h15" />
-                        <path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3" />
-                        <path d="M6 14h12" />
-                    </svg>
-                    <span>Raw Materials</span>
-                </a>
+                        <a href="#" class="nav-item sub-item" data-view="materials">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="nav-icon">
+                                <path d="M4.5 3h15" />
+                                <path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3" />
+                                <path d="M6 14h12" />
+                            </svg>
+                            <span>Raw Materials</span>
+                        </a>
 
-                <a href="#" class="nav-item" data-view="logs" id="navLogs">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="nav-icon">
-                        <path d="M12 8v4l3 3" />
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M12 2v2" />
-                        <path d="M12 20v2" />
-                        <path d="M2 12h2" />
-                        <path d="M20 12h2" />
-                    </svg>
-                    <span>Stock Logs</span>
-                </a>
+                        <a href="#" class="nav-item sub-item" data-view="logs" id="navLogs">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="nav-icon">
+                                <path d="M12 8v4l3 3" />
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 2v2" />
+                                <path d="M12 20v2" />
+                                <path d="M2 12h2" />
+                                <path d="M20 12h2" />
+                            </svg>
+                            <span>Stock Logs</span>
+                        </a>
 
-                <a href="#" class="nav-item" data-view="lowstock">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="nav-icon">
-                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg>
-                    <span>Low Stock</span>
-                    <span class="badge" id="lowStockBadge">0</span>
-                </a>
+                        <a href="#" class="nav-item sub-item" data-view="lowstock">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="nav-icon">
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                                <line x1="12" y1="9" x2="12" y2="13" />
+                                <line x1="12" y1="17" x2="12.01" y2="17" />
+                            </svg>
+                            <span>Low Stock</span>
+                            <span class="badge" id="lowStockBadge">0</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Finances Dropdown -->
+                <div class="nav-dropdown" id="financesDropdown">
+                    <div class="nav-item dropdown-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="nav-icon">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
+                            <line x1="12" y1="18" x2="12" y2="6" />
+                        </svg>
+                        <span>Finances</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="dropdown-chevron">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="#" class="nav-item sub-item" data-view="financeOverview">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="nav-icon">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                <line x1="3" y1="9" x2="21" y2="9" />
+                                <line x1="9" y1="21" x2="9" y2="9" />
+                            </svg>
+                            <span>Overview</span>
+                        </a>
+
+                        <a href="#" class="nav-item sub-item" data-view="financeTransactions">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="nav-icon">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                                <polyline points="10 9 9 9 8 9" />
+                            </svg>
+                            <span>Transactions</span>
+                        </a>
+
+                        <a href="#" class="nav-item sub-item" data-view="financeAnnual">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="nav-icon">
+                                <line x1="18" y1="20" x2="18" y2="10" />
+                                <line x1="12" y1="20" x2="12" y2="4" />
+                                <line x1="6" y1="20" x2="6" y2="14" />
+                            </svg>
+                            <span>Annual Report</span>
+                        </a>
+
+                        <a href="#" class="nav-item sub-item" data-view="financeSetup">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="nav-icon">
+                                <path
+                                    d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <span>Setup</span>
+                        </a>
+                    </div>
+                </div>
 
                 <a href="#" class="nav-item hidden" data-view="users" id="navUsers">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -244,8 +332,8 @@
                         </svg>
                         <span>Logout</span>
                     </button>
-                    <button class="btn-action logout" onclick="openSettingsModal()" title="Settings"
-                        style="background: var(--bg-tertiary);">
+                    <button id="sidebarSettingsBtn" class="btn-action logout" onclick="openSettingsModal()"
+                        title="Settings" style="background: var(--bg-tertiary);">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path
@@ -254,11 +342,13 @@
                         </svg>
                     </button>
                 </div>
-            </div>
         </aside>
 
         <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
+
+
+        <!-- Toast Container -->
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
@@ -275,6 +365,7 @@
             <!-- Overview View -->
             <section id="overviewView" class="view">
                 <div class="header-actions">
+
                     <div class="date-range-picker">
                         <input type="date" id="overviewStartDate" class="form-input overview-date-input">
                         <span style="color: var(--text-muted);">to</span>
@@ -462,9 +553,11 @@
             <!-- Products View -->
             <section id="productsView" class="view">
                 <div class="card">
-                    <div class="card-header">
-                        <h3>Product Stock</h3>
-                        <div class="header-actions">
+                    <div class="card-header" style="padding: 10px 20px; min-height: 56px;">
+                        <h3 style="white-space: nowrap; flex: 1; margin: 0; display: flex; align-items: center;">Product
+                            Stock</h3>
+                        <div class="header-actions"
+                            style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-left: auto; width: auto; margin-bottom: 0;">
                             <button class="btn btn-secondary btn-sm" onclick="downloadFullCSV('product')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -475,10 +568,7 @@
                                 </svg>
                                 Export CSV
                             </button>
-                            <button class="btn btn-secondary btn-sm" onclick="refreshData()"
-                                style="margin-left: 8px;">🔄 Refresh</button>
-                            <button class="btn btn-primary btn-sm" onclick="openAddProductModal()"
-                                style="margin-left: 8px;">
+                            <button class="btn btn-primary btn-sm" id="addProductBtn" onclick="openAddProductModal()">
                                 <span class="btn-icon">+</span> Add Product
                             </button>
                         </div>
@@ -505,10 +595,12 @@
 
             <!-- Materials View -->
             <section id="materialsView" class="view">
-                <div class="card materials-card">
-                    <div class="card-header">
-                        <h3>Raw Materials</h3>
-                        <div class="header-actions">
+                <div class="card">
+                    <div class="card-header" style="padding: 10px 20px; min-height: 56px;">
+                        <h3 style="white-space: nowrap; flex: 1; margin: 0; display: flex; align-items: center;">Raw
+                            Materials</h3>
+                        <div class="header-actions"
+                            style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-left: auto; width: auto; margin-bottom: 0;">
                             <button class="btn btn-secondary btn-sm" onclick="downloadFullCSV('material')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -519,10 +611,7 @@
                                 </svg>
                                 Export CSV
                             </button>
-                            <button class="btn btn-secondary btn-sm" onclick="refreshData()"
-                                style="margin-left: 8px;">🔄 Refresh</button>
-                            <button class="btn btn-primary btn-sm" onclick="openAddMaterialModal()"
-                                style="margin-left: 8px;">
+                            <button class="btn btn-primary btn-sm" id="addMaterialBtn" onclick="openAddMaterialModal()">
                                 <span class="btn-icon">+</span> Add Material
                             </button>
                         </div>
@@ -550,9 +639,11 @@
             <!-- Low Stock View -->
             <section id="lowstockView" class="view">
                 <div class="card">
-                    <div class="card-header">
-                        <h3>All Low Stock Items</h3>
-                        <div class="header-actions">
+                    <div class="card-header" style="padding: 10px 20px; min-height: 56px;">
+                        <h3 style="white-space: nowrap; flex: 1; margin: 0; display: flex; align-items: center;">All Low
+                            Stock Items</h3>
+                        <div class="header-actions"
+                            style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-left: auto; width: auto; margin-bottom: 0;">
                             <button class="btn btn-secondary btn-sm" onclick="downloadLowStockCSV('product')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -563,8 +654,7 @@
                                 </svg>
                                 Download Products CSV
                             </button>
-                            <button class="btn btn-secondary btn-sm" onclick="downloadLowStockCSV('material')"
-                                style="margin-left: 8px;">
+                            <button class="btn btn-secondary btn-sm" onclick="downloadLowStockCSV('material')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="btn-icon">
@@ -620,19 +710,59 @@
             <!-- Logs View -->
             <section id="logsView" class="view">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="header-tabs">
+                    <div class="card-header"
+                        style="padding: 10px 20px; min-height: 56px; display: flex; align-items: center; justify-content: space-between;">
+                        <div class="header-tabs"
+                            style="white-space: nowrap; margin: 0; display: flex; align-items: center; gap: 8px;">
                             <button class="tab-btn active" onclick="switchLogTab('product')">Product Logs</button>
                             <button class="tab-btn" onclick="switchLogTab('material')">Material Logs</button>
                         </div>
-                        <button class="btn btn-primary" onclick="openLogEntryModal()">
-                            <span class="btn-icon">+</span> New Entry
-                        </button>
+                        <div id="logsBulkActions" class="bulk-actions-bar hidden"
+                            style="margin: 0; display: flex; align-items: center; gap: 8px;">
+                            <span class="selected-count">0 selected</span>
+                            <button class="btn btn-secondary btn-sm" onclick="openBulkEdit('stock')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+                                    <path d="m15 5 4 4" />
+                                </svg>
+                                Edit Selected
+                            </button>
+                            <button class="btn btn-danger btn-sm" onclick="confirmBulkDelete('stock')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M3 6h18" />
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                                </svg>
+                                Delete Selected
+                            </button>
+                        </div>
+                        <div class="header-actions"
+                            style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; width: auto; margin-bottom: 0;">
+                            <button class="btn btn-refresh-themed btn-sm" id="logsSelectBtn"
+                                onclick="toggleLogsSelectMode()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 11 12 14 22 4" />
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                                </svg>
+                                Select
+                            </button>
+                            <button class="btn btn-primary btn-sm" id="addLogEntryBtn" onclick="openLogEntryModal()">
+                                <span class="btn-icon">+</span> New Entry
+                            </button>
+                        </div>
                     </div>
                     <div class="table-container">
                         <table class="data-table" id="logsTable">
                             <thead>
                                 <tr>
+                                    <th class="checkbox-col logs-checkbox-col"><input type="checkbox" id="selectAllLogs"
+                                            onclick="toggleSelectAll('logs')"></th>
                                     <th>Date</th>
                                     <th>Item Name</th>
                                     <th>Stock In</th>
@@ -650,6 +780,272 @@
                 </div>
             </section>
 
+            <!-- Finance Overview View -->
+            <section id="financeOverviewView" class="view">
+                <div class="header-actions">
+                    <div id="financeInsights" class="insights-card" style="display: none;"></div>
+                    <div class="date-range-picker">
+                        <div class="filter-group">
+                            <select id="financeMonthSelect" class="form-input">
+                                <!-- Populated by JS -->
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <select id="financeYearSelect" class="form-input">
+                                <!-- Populated by JS -->
+                            </select>
+                        </div>
+                        <button class="btn-apply" onclick="refreshFinanceData()">Apply</button>
+                    </div>
+                </div>
+
+                <!-- Monthly Summary Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-value text-success" id="financeTotalIncome">Rs0</span>
+                            <span class="stat-label">Total Income</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-value text-danger" id="financeTotalExpenses">Rs0</span>
+                            <span class="stat-label">Total Expenses</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-value" id="financeTotalProfit">Rs0</span>
+                            <span class="stat-label">Net Profit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-grid" id="financeChartsGrid" style="display: none;">
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h3>Expense Breakdown</h3>
+                        </div>
+                        <div class="chart-container"
+                            style="position: relative; height:300px; width:100%; padding: 20px;">
+                            <canvas id="expenseDoughnutChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h3>Income vs Expenses (Monthly)</h3>
+                        </div>
+                        <div class="chart-container"
+                            style="position: relative; height:300px; width:100%; padding: 20px;">
+                            <canvas id="incomeExpenseBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="financeOverviewGrid" class="finance-dashboard-grid">
+                    <!-- Categories will be dynamically rendered here -->
+                </div>
+            </section>
+
+            <!-- Finance Transactions View -->
+            <section id="financeTransactionsView" class="view">
+                <div class="card">
+                    <div class="card-header"
+                        style="padding: 10px 20px; min-height: 56px; display: flex; align-items: center; justify-content: space-between;">
+                        <h3 style="white-space: nowrap; margin: 0; display: flex; align-items: center;">
+                            Transaction Logs</h3>
+                        <div id="financeBulkActions" class="bulk-actions-bar hidden"
+                            style="margin: 0; display: flex; align-items: center; gap: 8px;">
+                            <span class="selected-count">0 selected</span>
+                            <button class="btn btn-secondary btn-sm" onclick="openBulkEdit('finance')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+                                    <path d="m15 5 4 4" />
+                                </svg>
+                                Edit Selected
+                            </button>
+                            <button class="btn btn-danger btn-sm" onclick="confirmBulkDelete('finance')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M3 6h18" />
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                                </svg>
+                                Delete Selected
+                            </button>
+                        </div>
+                        <div class="header-actions"
+                            style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; width: auto; margin-bottom: 0;">
+                            <button class="btn btn-refresh-themed btn-sm" id="financeSelectBtn"
+                                onclick="toggleFinanceSelectMode()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 11 12 14 22 4" />
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                                </svg>
+                                Select
+                            </button>
+                            <button class="btn btn-primary btn-sm" id="addTransactionBtn"
+                                onclick="openAddFinanceModal()">
+                                <span class="btn-icon">+</span> Add Transaction
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table" id="financeTransactionsTable">
+                            <thead>
+                                <tr>
+                                    <th class="checkbox-col finance-checkbox-col"><input type="checkbox"
+                                            id="selectAllFinance" onclick="toggleSelectAll('finance')"></th>
+                                    <th>Date</th>
+                                    <th>Category</th>
+                                    <th>Subcategory</th>
+                                    <th class="text-right">Amount</th>
+                                    <th>Notes</th>
+                                    <th>User</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="financeTransactionsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Finance Annual Report View -->
+            <section id="financeAnnualView" class="view">
+                <div class="annual-report-header">
+                    <div class="year-selector">
+                        <label for="annualYearSelect">Select Year</label>
+                        <select id="annualYearSelect" class="form-input">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+                    <div class="header-actions-btns">
+                        <button class="btn btn-primary" onclick="renderFinanceAnnual()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M21 2v6h-6" />
+                                <path d="M3 12a9 9 0 0 1 15-6.7L21 8" />
+                                <path d="M3 22v-6h6" />
+                                <path d="M21 12a9 9 0 0 1-15 6.7L3 16" />
+                            </svg>
+                            Generate Report
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Annual Summary Cards -->
+                <div class="annual-grid">
+                    <div class="stat-card annual">
+                        <div class="stat-info">
+                            <span class="stat-value text-success" id="annualTotalIncome">Rs0</span>
+                            <span class="stat-label">Annual Income</span>
+                        </div>
+                    </div>
+                    <div class="stat-card annual">
+                        <div class="stat-info">
+                            <span class="stat-value text-danger" id="annualTotalExpenses">Rs0</span>
+                            <span class="stat-label">Annual Expenses</span>
+                        </div>
+                    </div>
+                    <div class="stat-card annual">
+                        <div class="stat-info">
+                            <span class="stat-value" id="annualNetProfit">Rs0</span>
+                            <span class="stat-label">Annual Net Profit</span>
+                        </div>
+                    </div>
+                    <div class="stat-card annual">
+                        <div class="stat-info">
+                            <span class="stat-value highlight" id="annualSavingsRate">0%</span>
+                            <span class="stat-label">Avg. Savings Rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Annual Charts -->
+                <div class="charts-grid annual-charts">
+                    <div class="card chart-card wide-chart">
+                        <div class="card-header">
+                            <h3>Monthly Income vs Expenses Trend</h3>
+                        </div>
+                        <div class="chart-container"
+                            style="position: relative; height:350px; width:100%; padding: 20px;">
+                            <canvas id="annualTrendChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h3>Monthly Savings Rate (%)</h3>
+                        </div>
+                        <div class="chart-container"
+                            style="position: relative; height:350px; width:100%; padding: 20px;">
+                            <canvas id="annualSavingsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Annual Data Grid -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Detailed Monthly Breakdown</h3>
+                        <div class="header-actions">
+                            <button class="btn btn-refresh-themed btn-sm" onclick="exportAnnualReport()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                Export CSV
+                            </button>
+                        </div>
+                    </div>
+                    <div class="annual-table-wrapper">
+                        <div class="table-container annual-table-container">
+                            <table class="data-table annual-data-table" id="annualDataTable">
+                                <thead>
+                                    <!-- Populated by JS -->
+                                </thead>
+                                <tbody id="annualDataTableBody">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Finance Setup View -->
+            <section id="financeSetupView" class="view">
+                <div class="card">
+                    <div class="card-header"
+                        style="padding: 10px 20px; min-height: 56px; display: flex; align-items: center; justify-content: space-between;">
+                        <h3 style="white-space: nowrap; margin: 0; display: flex; align-items: center;">Finance
+                            Configuration</h3>
+                        <div class="header-actions"
+                            style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; width: auto; margin-bottom: 0;">
+                            <button class="btn btn-primary btn-sm" id="addCategoryBtn" onclick="openAddCategoryModal()">
+                                <span class="btn-icon">+</span> Add Category
+                            </button>
+                        </div>
+                    </div>
+                    <div class="setup-container">
+                        <p class="text-muted" style="margin-bottom: 20px;">Manage your income and expense categories.
+                            Click a category to edit it, or use the delete button to remove it.</p>
+                        <div id="financeCategoryList" class="finance-setup-list">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
             <!-- User Management View -->
             <section id="usersView" class="view">
                 <div class="card">
@@ -839,11 +1235,66 @@
                         </div>
                         <div class="form-group">
                             <label for="mgmtRole">Role *</label>
-                            <select id="mgmtRole" required>
-                                <option value="Editor">Editor</option>
+                            <select id="mgmtRole" required onchange="toggleAllowedPages()">
                                 <option value="Admin">Admin</option>
+                                <option value="Editor">Editor</option>
                                 <option value="Viewer">Viewer</option>
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="allowedPagesGroup" style="display: none; margin-top: 12px;">
+                        <label>Allowed Pages</label>
+                        <p class="text-muted" style="font-size: 0.8em; margin-bottom: 8px;">Select which pages this user
+                            can access.</p>
+                        <div class="checkbox-grid"
+                            style="display: grid; grid-template-columns: auto 1fr auto 1fr; gap: 8px 10px; align-items: center;">
+                            <input type="checkbox" value="dashboardView" class="page-checkbox" id="pg_dashboard"
+                                style="cursor:pointer;">
+                            <label for="pg_dashboard"
+                                style="cursor:pointer; white-space:nowrap; font-size:0.9em;">Dashboard</label>
+                            <input type="checkbox" value="overviewView" class="page-checkbox" id="pg_overview"
+                                style="cursor:pointer;">
+                            <label for="pg_overview"
+                                style="cursor:pointer; white-space:nowrap; font-size:0.9em;">Inventory Overview</label>
+
+                            <input type="checkbox" value="productsView" class="page-checkbox" id="pg_products"
+                                style="cursor:pointer;">
+                            <label for="pg_products"
+                                style="cursor:pointer; white-space:nowrap; font-size:0.9em;">Product Stock</label>
+
+                            <input type="checkbox" value="materialsView" class="page-checkbox" id="pg_materials"
+                                style="cursor:pointer;">
+                            <label for="pg_materials" style="cursor:pointer; white-space:nowrap; font-size:0.9em;">Raw
+                                Materials</label>
+                            <input type="checkbox" value="logsView" class="page-checkbox" id="pg_logs"
+                                style="cursor:pointer;">
+                            <label for="pg_logs" style="cursor:pointer; white-space:nowrap; font-size:0.9em;">Stock
+                                Logs</label>
+
+                            <input type="checkbox" value="lowstockView" class="page-checkbox" id="pg_lowstock"
+                                style="cursor:pointer;">
+                            <label for="pg_lowstock" style="cursor:pointer; white-space:nowrap; font-size:0.9em;">Low
+                                Stock</label>
+                            <input type="checkbox" value="financeOverviewView" class="page-checkbox" id="pg_finoverview"
+                                style="cursor:pointer;">
+                            <label for="pg_finoverview"
+                                style="cursor:pointer; white-space:nowrap; font-size:0.9em;">Finance Overview</label>
+
+                            <input type="checkbox" value="financeTransactionsView" class="page-checkbox"
+                                id="pg_fintrans" style="cursor:pointer;">
+                            <label for="pg_fintrans"
+                                style="cursor:pointer; white-space:nowrap; font-size:0.9em;">Finance
+                                Transactions</label>
+                            <input type="checkbox" value="financeAnnualView" class="page-checkbox" id="pg_finannual"
+                                style="cursor:pointer;">
+                            <label for="pg_finannual"
+                                style="cursor:pointer; white-space:nowrap; font-size:0.9em;">Annual Report</label>
+
+                            <input type="checkbox" value="financeSetupView" class="page-checkbox" id="pg_finsetup"
+                                style="cursor:pointer;">
+                            <label for="pg_finsetup"
+                                style="cursor:pointer; white-space:nowrap; font-size:0.9em;">Finance Setup</label>
                         </div>
                     </div>
                     <div class="form-actions">
@@ -854,6 +1305,8 @@
                 </form>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <!-- Stock Adjustment Modal -->
@@ -1006,20 +1459,173 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="settingsUrl">Apps Script URL</label>
+                    <label for="settingsUrl">Inventory Script URL</label>
                     <input type="url" id="settingsUrl" placeholder="https://script.google.com/macros/s/...">
+                </div>
+                <div class="form-group">
+                    <label for="settingsFinanceUrl">Finance Script URL</label>
+                    <input type="url" id="settingsFinanceUrl" placeholder="https://script.google.com/macros/s/...">
                 </div>
                 <div class="form-group">
                     <label for="settingsName">Your Name</label>
                     <input type="text" id="settingsName" placeholder="Your name">
                 </div>
                 <div class="form-actions">
-                    <button class="btn btn-danger" onclick="clearSettings()">Disconnect</button>
+                    <button class="btn btn-danger" onclick="clearSettings()">Disconnect All</button>
                     <button class="btn btn-primary" onclick="updateSettings()">Save Changes</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Add/Edit Category Modal -->
+    <div id="categoryModal" class="modal">
+        <div class="modal-content modal-sm">
+            <div class="modal-header">
+                <h2 id="categoryModalTitle">Add Category</h2>
+                <button class="btn-close" onclick="closeModal('categoryModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="categoryForm" onsubmit="handleCategorySubmit(event)">
+                    <input type="hidden" id="editingCategoryOriginalName">
+                    <div class="form-group">
+                        <label for="categoryNameInput">Category Name *</label>
+                        <input type="text" id="categoryNameInput" placeholder="e.g., Income, Rent, Marketing" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category Type *</label>
+                        <div class="category-type-toggle">
+                            <label class="type-option earning-option">
+                                <input type="radio" name="categoryType" id="categoryTypeEarning" value="earning"
+                                    required>
+                                <span class="type-label">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M12 5v14" />
+                                        <path d="m19 12-7-7-7 7" />
+                                    </svg>
+                                    Earning
+                                </span>
+                            </label>
+                            <label class="type-option spending-option">
+                                <input type="radio" name="categoryType" id="categoryTypeSpending" value="spending"
+                                    required>
+                                <span class="type-label">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M12 19V5" />
+                                        <path d="m5 12 7 7 7-7" />
+                                    </svg>
+                                    Spending
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Subcategories</label>
+                        <div id="modalSubcategoriesList" class="subcategories-list">
+                            <!-- Populated by JS -->
+                        </div>
+                        <div class="inline-add-group">
+                            <input type="text" id="newSubcategoryInput" class="form-input"
+                                placeholder="Enter subcategory name..."
+                                onkeydown="if(event.key === 'Enter') { event.preventDefault(); addSubcategoryFromModal(); }">
+                            <button type="button" class="btn-add-inline"
+                                onclick="addSubcategoryFromModal()">Add</button>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary"
+                            onclick="closeModal('categoryModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="categorySaveBtn">Save Category</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Finance Transaction Modal -->
+    <div id="addFinanceModal" class="modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2 id="financeModalTitle">Add Transactions</h2>
+                <button class="btn-close" onclick="closeModal('addFinanceModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="financeForm" onsubmit="handleFinanceSubmit(event)">
+                    <div class="multi-transaction-container">
+                        <table class="data-table" id="multiTransactionTable">
+                            <thead>
+                                <tr>
+                                    <th>Date *</th>
+                                    <th>Category *</th>
+                                    <th>Subcategory *</th>
+                                    <th>Amount (Rs) *</th>
+                                    <th>Notes</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="multiTransactionBody">
+                                <!-- Rows populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="addFinanceRow()"
+                        style="margin-top: 12px;">
+                        <span class="btn-icon">+</span> Add Row
+                    </button>
+                    <div class="form-actions" style="margin-top: 20px;">
+                        <button type="button" class="btn btn-secondary"
+                            onclick="closeModal('addFinanceModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save All Transactions</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Finance Transaction Modal -->
+    <div id="editFinanceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Transaction</h2>
+                <button class="btn-close" onclick="closeModal('editFinanceModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="editFinanceForm" onsubmit="handleEditFinanceSubmit(event)">
+                    <input type="hidden" id="editFinanceId">
+                    <div class="form-group">
+                        <label>Date *</label>
+                        <input type="date" id="editFinanceDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <input type="text" id="editFinanceCategory" readonly class="form-input-readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>Subcategory</label>
+                        <input type="text" id="editFinanceSubcategory" readonly class="form-input-readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>Amount (Rs) *</label>
+                        <input type="number" id="editFinanceAmount" step="0.01" min="0" required placeholder="0.00">
+                    </div>
+                    <div class="form-group">
+                        <label>Notes</label>
+                        <textarea id="editFinanceNotes" rows="2" placeholder="Optional details..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary"
+                            onclick="closeModal('editFinanceModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Batch Management Modal -->
     <div id="batchModal" class="modal">
@@ -1083,6 +1689,53 @@
                         <button class="btn btn-primary"
                             onclick="applyBatchWithMultiplier(document.getElementById('customMultiplier').value)">Apply</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bulk Edit Modal -->
+    <div id="bulkEditModal" class="modal">
+        <div class="modal-content bulk-edit-modal">
+            <div class="modal-header">
+                <h2 id="bulkEditTitle">Bulk Edit Entries</h2>
+                <button class="btn-close" onclick="closeModal('bulkEditModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="bulkEditForm">
+                    <div class="bulk-edit-container">
+                        <table class="data-table">
+                            <thead id="bulkEditHeader">
+                                <!-- Headers populated by JS -->
+                            </thead>
+                            <tbody id="bulkEditList">
+                                <!-- Rows populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-actions" style="margin-top: 24px; padding-bottom: 16px;">
+                        <button type="button" class="btn btn-secondary"
+                            onclick="closeModal('bulkEditModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save All Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmAppModal" class="modal">
+        <div class="modal-content modal-sm">
+            <div class="modal-header">
+                <h2 id="confirmModalTitle">Confirm</h2>
+                <button class="btn-close" onclick="closeConfirmModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmModalMessage" style="margin-bottom: 24px;">Are you sure?</p>
+                <div class="form-actions" style="margin-top: 0; padding-bottom: 0;">
+                    <button type="button" class="btn btn-secondary" onclick="closeConfirmModal()">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmModalBtn"
+                        onclick="executeConfirmAction()">Confirm</button>
                 </div>
             </div>
         </div>
